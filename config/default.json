@@ -1,0 +1,4 @@
+{
+	"mongoURI": "mongodb+srv://roman:*REMOVED*-wp0nm.mongodb.net/health-guard?retryWrites=true&w=majority",
+	"jwtSecret": "mysupersecret123!@#()*"
+}
