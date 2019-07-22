@@ -8,7 +8,7 @@ const adminRoutes = require('./routes/admin');
 const _PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json({ extended: false }));
-
+//*asd */
 app.get('/', (req, res) =>
 	res.json({ msg: 'Welcome to the HealthGuard API...' })
 );
