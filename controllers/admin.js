@@ -4,9 +4,23 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 //*REGISTRATION
+
+/* REACT 
+
+
+import axios from 'axios';
+
+const setAuthToken = token => {
+	if (token) {
+		axios.defaults.headers.common['x-auth-token'] = token;
+	} else {
+		delete axios.headers.common['x-auth-token'];
+	}
+};
+
+export default setAuthToken;
+*/
 exports.postRegisterUser = async (req, res, next) => {
-
-
 	const { name, email, password } = req.body;
 
 	try {

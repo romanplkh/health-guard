@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const patientController = require('../controllers/patient');
 const doctorController = require('../controllers/doctor');
-const adminController = require('../controllers/admin');
+
 
 //!Patient Management /api/admin
 //#region Patients
@@ -43,6 +43,6 @@ router.delete('/doctors/:id', doctorController.deleteDoctor);
 //#endregion
 
 //!Register admin
-router.post('/', adminController);
+//router.post('/', adminController);
 
 module.exports = router;
