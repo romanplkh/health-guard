@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const patientSchema = new Schema({
+const doctorSchema = new Schema({
 	firstName: {
 		type: String,
 		required: true
@@ -17,10 +17,14 @@ const patientSchema = new Schema({
 	email: {
 		type: String
 	},
-	type: {
+	profile: {
 		type: String,
-		default: 'General'
+		required: true
+	},
+	price: {
+		type: Number,
+		required: true
 	}
 });
 
-module.exports = mongoose.model('patient', patientSchema);
+module.exports = mongoose.model('doctor', doctorSchema);

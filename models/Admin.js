@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const patientSchema = new Schema({
+const adminSchema = new Schema({
 	firstName: {
 		type: String,
 		required: true
@@ -11,16 +11,10 @@ const patientSchema = new Schema({
 		type: String,
 		required: true
 	},
-	phone: {
-		type: String
-	},
 	email: {
-		type: String
-	},
-	type: {
 		type: String,
-		default: 'General'
+		required: true
 	}
 });
 
-module.exports = mongoose.model('patient', patientSchema);
+module.exports = mongoose.model('admin', adminSchema);
