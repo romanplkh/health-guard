@@ -41,7 +41,7 @@ exports.addPatient = async (req, res, next) => {
 		const savedPatient = await newPatient.save();
 
 		if (savedPatient) {
-			res.status(201).json({ msg: 'Patient successfully added' });
+			res.status(201).json(savedPatient);
 		}
 	} catch (error) {
 		error505(error, res);

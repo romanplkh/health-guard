@@ -6,7 +6,9 @@ import {
 	GET_RECORD,
 	SET_EDIT_MODE,
 	RESET_EDIT_MODE,
-	CLEAR_CURRENT_RECORD
+	CLEAR_CURRENT_RECORD,
+	ADD_RECORD_FAIL,
+	RESET_ERROR
 } from '../types';
 
 export default (state, action) => {
@@ -22,6 +24,12 @@ export default (state, action) => {
 				...state,
 				selectedPatient: null,
 				selectedPatient: action.payload
+			};
+		case ADD_RECORD:
+			return {
+				...state,
+				addedRecord: true,
+				error: null
 			};
 		case UPDATE_RECORD:
 			const updatedRecords = state.patients.map(patient => {
@@ -59,6 +67,18 @@ export default (state, action) => {
 			return {
 				...state,
 				editMode: false
+			};
+		case ADD_RECORD_FAIL:
+			return {
+				...state,
+				error: action.payload,
+				addedRecord: false
+			};
+		case RESET_ERROR:
+			return {
+				...state,
+				error: null,
+				addedRecord: false
 			};
 		default:
 			return state;

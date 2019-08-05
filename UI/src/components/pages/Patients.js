@@ -1,20 +1,27 @@
 import React from 'react';
 import PatientList from '../patients/PatientList';
 import PatientDetails from '../patients/PatientDetails';
+import { Link } from 'react-router-dom';
 
 const Patients = () => {
-  return (
-    <div className="row">
-      <div className="col-md-7">
-        <h1 className="display-4 text-center">Patients</h1>
-        <PatientList />
-      </div>
-      <div className="col-md-5">
-        <h1 className="display-4 text-center">Details</h1>
-        <PatientDetails />
-      </div>
-    </div>
-  );
+	return (
+		<div className="row ">
+			<div className="col-xl-7 col-md-12 col-sm-12">
+				<h1 className="display-4 text-center mt-3">Patients</h1>
+				<Link
+					to="patients/add"
+					className="btn btn-outline-success float-right mb-3"
+				>
+					Add
+				</Link>
+				<PatientList />
+			</div>
+			<div className="col-xl-3 col-lg-12 col-md-12  mx-auto">
+				<h1 className="display-4 text-center mt-3 mb-5">Details</h1>
+				<PatientDetails />
+			</div>
+		</div>
+	);
 };
 
 export default Patients;

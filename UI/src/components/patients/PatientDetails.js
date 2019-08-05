@@ -75,7 +75,7 @@ const PatientDetails = () => {
 	}
 	return (
 		<div className="row flex-column">
-			<div className="card mb-3 mx-auto" style={{ width: '540px' }}>
+			<div className="card mb-3 mx-auto  mt-3" style={{ width: '100%' }}>
 				<div className="row no-gutters">
 					<div className="col-md-4">
 						<img
@@ -124,7 +124,7 @@ const PatientDetails = () => {
 			<br />
 
 			{editMode && (
-				<form className="mx-5">
+				<form className="mx-5 w-100">
 					<div className="form-group">
 						<label>First Name</label>
 						<input
@@ -156,7 +156,7 @@ const PatientDetails = () => {
 						/>
 					</div>
 					<div className="form-group">
-						<label>Email address</label>
+						<label>Phone</label>
 						<input
 							type="text"
 							name="phone"

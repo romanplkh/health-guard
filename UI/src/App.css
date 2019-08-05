@@ -1,12 +1,11 @@
-.sidebar-sticky {
+.sidebar{
   position: relative;
   top: 0;
   left: 0;
-  height: calc(100vh - 48px);
-  padding-top: 0.5rem;
+  height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto;
-  /* position: sticky; */
+  overflow-y: hidden;
+
 }
 
 .nav-link {

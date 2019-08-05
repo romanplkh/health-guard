@@ -19,10 +19,10 @@ const PatientList = () => {
   };
 
   return (
-    <table className="table table-striped">
+    <table className="table table-striped mt-3">
       <thead>
         <tr>
-          <th>FirstName</th>
+          <th>First Name</th>
           <th>Last Name</th>
           <th>Phone</th>
           <th>Email</th>
