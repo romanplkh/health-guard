@@ -1,48 +1,54 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState, Fragment } from 'react';
 import PatientContext from '../context/patientContext/patientContext';
 import PatientItem from './PatientItem';
+import Pagination from '../layout/Pagination';
 
-const PatientList = () => {
-  const patientCTX = useContext(PatientContext);
+const PatientList = ({ history }) => {
+	const patientCTX = useContext(PatientContext);
 
-  const { patients } = patientCTX;
+	const { patients, details } = patientCTX;
 
-  const { getRecords, getRecord } = patientCTX.actions;
+	const { getRecords, getRecord } = patientCTX.actions;
 
-  useEffect(() => {
-    getRecords();
-    //eslint-disable-next-line
-  }, []);
+	useEffect(() => {
+		getRecords();
+		//eslint-disable-next-line
+	}, []);
 
-  const onPatientClick = id => {
-    getRecord(id);
-  };
+	const onPatientClick = id => {
+		getRecord(id);
+	};
 
-  return (
-    <table className="table table-striped mt-3">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        {patients &&
-          patients.map(patient => {
-            return (
-              <PatientItem
-                {...patient}
-                key={patient._id}
-                onPatientClick={onPatientClick}
-              />
-            );
-          })}
-      </tbody>
-    </table>
-  );
+	return (
+		<Fragment>
+			<table className="table table-striped mt-3">
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<th>Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					{patients &&
+						patients.patientsList.map(patient => {
+							return (
+								<PatientItem
+									{...patient}
+									key={patient._id}
+									onPatientClick={onPatientClick}
+								/>
+							);
+						})}
+				</tbody>
+			</table>
+			{details && (
+				<Pagination {...details} history={history} getRecords={getRecords} />
+			)}
+		</Fragment>
+	);
 };
 
 export default PatientList;

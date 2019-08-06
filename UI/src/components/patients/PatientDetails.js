@@ -70,7 +70,7 @@ const PatientDetails = () => {
 		);
 	}
 
-	if (!selectedPatient.image === null) {
+	if (selectedPatient.image === null) {
 		return <Spinner />;
 	}
 	return (

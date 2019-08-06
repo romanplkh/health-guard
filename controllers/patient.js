@@ -1,10 +1,28 @@
 const Patient = require('../models/Patient');
 const error505 = require('../helpers/errors').error500;
+const PATIENTS_PER_PAGE = 5;
 
 exports.getPatients = async (req, res, next) => {
+	const page = req.query.page;
+
 	try {
-		const patients = await Patient.find().sort({ lastName: 1 });
-		res.json(patients);
+		const numPatients = await Patient.find().countDocuments();
+
+		let patients = await Patient.find()
+			.skip((page - 1) * PATIENTS_PER_PAGE)
+			.limit(PATIENTS_PER_PAGE)
+			.sort({ lastName: 1 });
+
+		const details = {
+			numberPatients: numPatients,
+			itemsPerPage: PATIENTS_PER_PAGE
+		};
+
+		const patientsList = patients;
+
+		const result = { details, patientsList };
+
+		res.json(result);
 	} catch (error) {
 		error505(error, res);
 	}
@@ -108,4 +126,3 @@ exports.deletePatient = async (req, res, next) => {
 		error505(error, res);
 	}
 };
-

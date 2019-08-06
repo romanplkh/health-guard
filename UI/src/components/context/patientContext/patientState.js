@@ -49,9 +49,9 @@ const PatientState = props => {
 
 	//!GET_PATIENTS
 
-	const getRecords = async () => {
+	const getRecords = async (page = 1) => {
 		try {
-			const resp = await axios.get('/patients');
+			const resp = await axios.get(`/patients?page=${page}`);
 			if (resp.status === 200) {
 				dispatch({ type: GET_RECORDS, payload: resp.data });
 			}
@@ -59,6 +59,8 @@ const PatientState = props => {
 			//dispatch({ type: CONTACT_ADD_ERROR, payload: error.response.msg });
 		}
 	};
+
+	//!GET PATIENT 
 
 	const getRecord = async id => {
 		try {
@@ -98,7 +100,6 @@ const PatientState = props => {
 	};
 
 	//!Clear current contact
-
 	const clearCurrentRecord = () => {
 		dispatch({ type: CLEAR_CURRENT_RECORD });
 	};
@@ -115,6 +116,7 @@ const PatientState = props => {
 		<PatientContext.Provider
 			value={{
 				patients: state.patients,
+				details: state.details,
 				selectedPatient: state.selectedPatient,
 				editMode: state.editMode,
 				error: state.error,

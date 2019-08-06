@@ -13,11 +13,13 @@ import {
 
 export default (state, action) => {
 	console.log(action);
+
 	switch (action.type) {
 		case GET_RECORDS:
 			return {
 				...state,
-				patients: action.payload
+				patients: { ...action.payload },
+				details: {...action.payload.details}
 			};
 		case GET_RECORD:
 			return {

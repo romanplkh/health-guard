@@ -6,7 +6,7 @@ import Home from './components/pages/Home';
 import Patients from './components/pages/Patients';
 import Sidebar from './components/layout/Sidebar';
 import PatientState from './components/context/patientContext/patientState';
-import AddForm from './components/pages/AddForm';
+import AddForm from './components/patients/AddForm';
 
 function App() {
 	return (

@@ -11,11 +11,14 @@ const AddForm = ({ history }) => {
 		email: '',
 		phone: '',
 		firstName: '',
-		lastName: ''
+		lastName: '',
+		type: 'General'
 	});
 
 	const onTextChange = e => {
 		setPatient({ ...patient, [e.target.name]: e.target.value });
+
+		console.log(patient);
 	};
 
 	const onCancelAdd = () => {
@@ -26,7 +29,7 @@ const AddForm = ({ history }) => {
 
 	useEffect(() => {
 		if (addedRecord) {
-			resetError()
+			resetError();
 			history.push('/patients');
 		}
 
@@ -36,9 +39,10 @@ const AddForm = ({ history }) => {
 	const onAddPatientSubmit = e => {
 		e.preventDefault();
 		addPatient(patient);
+		console.log(patient);
 	};
 
-	const { email, phone, firstName, lastName } = patient;
+	const { email, phone, firstName, lastName, status } = patient;
 
 	return (
 		<div className="row mt-3">
@@ -85,6 +89,17 @@ const AddForm = ({ history }) => {
 							value={phone}
 							onChange={onTextChange}
 						/>
+						<div className="form-group">
+							<label>Status</label>
+							<select
+								className="form-control"
+								name="type"
+								onChange={onTextChange}
+							>
+								<option value="General">General</option>
+								<option value="VIP">VIP</option>
+							</select>
+						</div>
 					</div>
 
 					<div className="d-flex justify-content-end">
