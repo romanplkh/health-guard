@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, Fragment } from 'react';
+import React, { useContext, useEffect, Fragment } from 'react';
 import PatientContext from '../context/patientContext/patientContext';
 import PatientItem from './PatientItem';
 import Pagination from '../layout/Pagination';
@@ -33,7 +33,7 @@ const PatientList = ({ history }) => {
 				</thead>
 				<tbody>
 					{patients &&
-						patients.patientsList.map(patient => {
+						patients.map(patient => {
 							return (
 								<PatientItem
 									{...patient}

@@ -11,10 +11,10 @@ import {
 const Sidebar = () => {
 	return (
 		<Fragment>
-			<div className="sidebar bg-dark pl-3 ">
+			<div className="sidebar bg-dark pt-4 pl-3 d-none d-md-block ">
 				<ul className="navbar-nav flex-column">
 					<li className="nav-item">
-						<Link to="/patients" className="nav-link text-white">
+						<Link to="/patients?page=1" className="nav-link text-white">
 							<FontAwesomeIcon icon={faChalkboardTeacher} size="lg" /> Patients
 						</Link>
 					</li>

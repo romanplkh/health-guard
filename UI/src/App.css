@@ -1,10 +1,21 @@
 .sidebar{
+  min-height: 100vh;
+  width: fit-content;
+  padding-right: 1.2em;
   position: relative;
   top: 0;
   left: 0;
-  height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
+ /*  height: 100%;
+  width: 160px;
+  position: fixed;
+   z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px; */
 
 }
 

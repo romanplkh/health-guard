@@ -12,19 +12,16 @@ import {
 } from '../types';
 
 export default (state, action) => {
-	console.log(action);
-
 	switch (action.type) {
 		case GET_RECORDS:
 			return {
 				...state,
-				patients: { ...action.payload },
-				details: {...action.payload.details}
+				patients: [...action.payload.patientsList],
+				details: { ...action.payload.details }
 			};
 		case GET_RECORD:
 			return {
 				...state,
-				selectedPatient: null,
 				selectedPatient: action.payload
 			};
 		case ADD_RECORD:
@@ -36,7 +33,7 @@ export default (state, action) => {
 		case UPDATE_RECORD:
 			const updatedRecords = state.patients.map(patient => {
 				if (patient._id === action.payload._id) {
-					return (patient = action.payload);
+					return Object.assign(patient, action.payload);
 				} else {
 					return patient;
 				}

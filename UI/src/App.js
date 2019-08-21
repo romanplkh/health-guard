@@ -8,6 +8,7 @@ import Sidebar from './components/layout/Sidebar';
 import PatientState from './components/context/patientContext/patientState';
 import AddForm from './components/patients/AddForm';
 
+
 function App() {
 	return (
 		<PatientState>
@@ -16,10 +17,8 @@ function App() {
 					<Navbar />
 					<div className="container-fluid">
 						<div className="row">
-							<div className="col-md-2 d-none d-md-block bg-light sidebar pl-0  ">
-								<Sidebar />
-							</div>
-							<div className="col-md-9 ml-sm-auto col-lg-10 px-4">
+							<Sidebar />
+							<div className="col p-0 m-0">
 								<Switch>
 									<Route exact path="/" component={Home} />
 									<Route exact path="/patients" component={Patients} />
@@ -28,6 +27,7 @@ function App() {
 							</div>
 						</div>
 					</div>
+					{/* <Footer /> */}
 				</Fragment>
 			</Router>
 		</PatientState>

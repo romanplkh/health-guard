@@ -25,15 +25,15 @@ const PatientDetails = () => {
 	useEffect(() => {
 		if (selectedPatient !== null) {
 			setUpdatedRecord(selectedPatient);
-		} else {
+		} /* else {
 			setUpdatedRecord({
 				email: '',
 				phone: '',
 				firstName: '',
 				lastName: ''
 			});
-		}
-	}, [selectedPatient, patientCTX]);
+		} */
+	}, [selectedPatient]);
 
 	const { email, phone, firstName, lastName } = updatedRecord;
 
@@ -74,57 +74,46 @@ const PatientDetails = () => {
 		return <Spinner />;
 	}
 	return (
-		<div className="row flex-column">
-			<div className="card mb-3 mx-auto  mt-3" style={{ width: '100%' }}>
-				<div className="row no-gutters">
-					<div className="col-md-4">
-						<img
-							src={selectedPatient.image}
-							className="card-img img-thumbnail"
-							alt="..."
-							style={{ maxheight: '100%' }}
-						/>
-					</div>
-					<div className="col-md-8">
-						<div className="card-body">
-							<h5 className="card-title">
-								{selectedPatient.firstName} {/*  */}
-								{selectedPatient.lastName}
-							</h5>
-							<ul className="list-group list-group-flush mb-3">
-								<li className="list-group-item">
-									Email: {selectedPatient.email}
-								</li>
-								<li className="list-group-item">
-									Phone: {selectedPatient.phone}
-								</li>
-								<li className="list-group-item">
-									Type: {selectedPatient.type}
-								</li>
-							</ul>
-							<div className="d-flex justify-content-end">
-								<button className="btn btn-warning" onClick={setEditMode}>
-									{' '}
-									<FontAwesomeIcon icon={faEdit} className="mr-2" />
-									Edit
-								</button>
-								<button
-									className="btn btn-danger ml-2"
-									onClick={() => deleteRecord(selectedPatient._id)}
-								>
-									{' '}
-									<FontAwesomeIcon icon={faTrash} className="mr-2" />
-									Delete
-								</button>
-							</div>
-						</div>
+		<React.Fragment>
+			<div className="card mb-3" style={{ width: '20rem' }}>
+				<div className="row justify-content-center pt-2">
+					<img
+						src={selectedPatient.image}
+						className="img-thumbnail "
+						alt="..."
+						style={{ width: '10rem' }}
+					/>
+				</div>
+
+				<div className="card-body">
+					<h5 className="card-title">
+						{selectedPatient.firstName}
+						{selectedPatient.lastName}
+					</h5>
+					<ul className="list-group list-group-flush mb-3">
+						<li className="list-group-item">Email: {selectedPatient.email}</li>
+						<li className="list-group-item">Phone: {selectedPatient.phone}</li>
+						<li className="list-group-item">Type: {selectedPatient.type}</li>
+					</ul>
+					<div className="float-right">
+						<button className="btn btn-warning" onClick={setEditMode}>
+							<FontAwesomeIcon icon={faEdit} className="mr-2" />
+							Edit
+						</button>
+						<button
+							className="btn btn-danger ml-2"
+							onClick={() => deleteRecord(selectedPatient._id)}
+						>
+							<FontAwesomeIcon icon={faTrash} className="mr-2" />
+							Delete
+						</button>
 					</div>
 				</div>
 			</div>
 			<br />
 
 			{editMode && (
-				<form className="mx-5 w-100">
+				<form className="mx-5 w-100 mb-5">
 					<div className="form-group">
 						<label>First Name</label>
 						<input
@@ -185,7 +174,7 @@ const PatientDetails = () => {
 					</div>
 				</form>
 			)}
-		</div>
+		</React.Fragment>
 	);
 };
 

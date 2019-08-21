@@ -19,7 +19,7 @@ import {
 
 const PatientState = props => {
 	const initialState = {
-		patients: null,
+		patients: [],
 		selectedPatient: null,
 		editMode: false,
 		error: null,
@@ -36,8 +36,6 @@ const PatientState = props => {
 	const addPatient = async patient => {
 		try {
 			const resp = await axios.post('/patients', patient);
-			console.log(resp);
-
 			dispatch({ type: ADD_RECORD, payload: resp.data });
 		} catch (error) {
 			dispatch({
@@ -90,7 +88,6 @@ const PatientState = props => {
 
 	//!Delete
 	const deleteRecord = async id => {
-		console.log(id);
 		try {
 			const resp = await axios.delete(`/patients/${id}`);
 			if (resp.status === 200) {

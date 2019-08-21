@@ -8,7 +8,6 @@ const Pagination = ({ numberPatients, itemsPerPage, getRecords, history }) => {
 
 	let page = parseInt(new URLSearchParams(location.search).get('page'));
 
-	console.log(page);
 
 	const pagination = [];
 
