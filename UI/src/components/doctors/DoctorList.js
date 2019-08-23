@@ -1,15 +1,16 @@
-import React, { useContext, useEffect, Fragment } from 'react';
-import PatientContext from '../context/patientContext/patientContext';
-import PatientItem from './PatientItem';
+import React, { useContext, Fragment, useEffect } from 'react';
+import DoctorContext from '../context/doctorContext/doctorContext';
+import DoctorItem from '../doctors/DoctorItem';
 import Pagination from '../layout/Pagination';
 import PersonsList from '../persons-list/PersonsList';
 
-const PatientList = ({ history }) => {
-	
-	const patientCTX = useContext(PatientContext);
-	const { patients, details } = patientCTX;
-	const { getRecords, getRecord } = patientCTX.actions;
+const DoctorList = ({ history }) => {
+	const doctorCTX = useContext(DoctorContext);
+	const { doctors } = doctorCTX;
+	const { getRecords, getRecord } = doctorCTX.actions;
 
+	useEffect(() => {
+	}, []);
 
 	return (
 		<Fragment>
@@ -20,23 +21,24 @@ const PatientList = ({ history }) => {
 						<th>Last Name</th>
 						<th>Phone</th>
 						<th>Email</th>
-						<th>Type</th>
+						<th>Speciality</th>
+						<th>Price</th>
 					</tr>
 				</thead>
 				<tbody>
 					<PersonsList
 						getRecords={getRecords}
 						getRecord={getRecord}
-						element={PatientItem}
-						data={patients}
+						element={DoctorItem}
+						data={doctors}
 					/>
 				</tbody>
 			</table>
-			{details && (
+			{/* {details && (
 				<Pagination {...details} history={history} getRecords={getRecords} />
-			)}
+			)} */}
 		</Fragment>
 	);
 };
 
-export default PatientList;
+export default DoctorList;

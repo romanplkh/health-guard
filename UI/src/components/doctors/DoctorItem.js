@@ -1,11 +1,12 @@
 import React from 'react';
 
-const PatientItem = ({
+const DoctorItem = ({
 	firstName,
 	lastName,
 	phone,
 	email,
-	type,
+	profile,
+	price,
 	onPersonClick
 }) => {
 	return (
@@ -14,17 +15,10 @@ const PatientItem = ({
 			<td>{lastName}</td>
 			<td>{phone}</td>
 			<td>{email}</td>
-			<td>
-				<span
-					className={
-						type === 'General' ? 'badge badge-secondary' : 'badge badge-warning'
-					}
-				>
-					{type}
-				</span>
-			</td>
+			<td>{profile}</td>
+			<td>CA$ {price.toFixed(2)}</td>
 		</tr>
 	);
 };
 
-export default PatientItem;
+export default DoctorItem;

@@ -42,7 +42,8 @@ export default (state, action) => {
 			return {
 				...state,
 				patients: updatedRecords,
-				selectedPatient: action.payload
+				selectedPatient: action.payload,
+				editMode: false
 			};
 		case DELETE_RECORD:
 			return {

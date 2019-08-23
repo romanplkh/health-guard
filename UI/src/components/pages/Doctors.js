@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
-import PatientList from '../patients/PatientList';
-import PatientDetails from '../patients/PatientDetails';
-import PersonDetails from '../person-details/PersonDetails';
-import { Link } from 'react-router-dom';
-import patientContext from '../context/patientContext/patientContext';
+import DoctorList from '../doctors/DoctorList';
 
-const Patients = ({ history }) => {
-	const patientCTX = useContext(patientContext);
-	const { selectedPatient, editMode } = patientCTX;
+import { Link } from 'react-router-dom';
+import doctorContext from '../context/doctorContext/doctorContext';
+import PersonDetails from '../person-details/PersonDetails';
+
+const Doctors = ({ history }) => {
+	const doctorCTX = useContext(doctorContext);
+	const { selectedDoctor, editMode } = doctorCTX;
 
 	return (
 		<div className="container-fluid">
 			<div className="row">
 				<div className="col-xl-8 col-sm-12 ">
-					<h1 className="display-4 text-center mt-3">Patients</h1>
+					<h1 className="display-4 text-center mt-3">Doctors</h1>
 					<Link
 						to="patients/add"
 						className="btn btn-outline-success float-right mb-3"
@@ -23,16 +23,17 @@ const Patients = ({ history }) => {
 					<Link to="/" className="btn btn-outline-primary float-left mb-3">
 						There will be search
 					</Link>
-					<PatientList history={history} />
+					<DoctorList history={history} />
 				</div>
 				<div className="col-xl-4 col d-xl-block d-none">
 					<h1 className="display-4 text-center mt-3 mb-5">Details</h1>
 					<div className="row justify-content-center">
 						{/* <PatientDetails /> */}
 						<PersonDetails
-							data={selectedPatient}
-							actions={patientCTX.actions}
+							data={selectedDoctor}
+							actions={doctorCTX.actions}
 							editMode={editMode}
+							occupation={true}
 						/>
 					</div>
 				</div>
@@ -41,4 +42,4 @@ const Patients = ({ history }) => {
 	);
 };
 
-export default Patients;
+export default Doctors;
