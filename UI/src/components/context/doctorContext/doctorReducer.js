@@ -26,12 +26,10 @@ export default (state, action) => {
 				...state,
 				selectedDoctor: action.payload
 			};
-		// case ADD_RECORD:
-		// 	return {
-		// 		...state,
-		// 		addedRecord: true,
-		// 		error: null
-		// 	};
+		case ADD_RECORD:
+			return {
+				...state
+			};
 		case UPDATE_RECORD:
 			const updatedRecords = state.doctors.map(doctor => {
 				if (doctor._id === action.payload._id) {
@@ -47,14 +45,14 @@ export default (state, action) => {
 				selectedDoctor: action.payload,
 				editMode: false
 			};
-		// case DELETE_RECORD:
-		// 	return {
-		// 		...state,
-		// 		patients: state.patients.filter(
-		// 			patient => patient._id !== action.payload
-		// 		),
-		// 		selectedPatient: null
-		// 	};
+		case DELETE_RECORD:
+			return {
+				...state,
+				doctors: state.doctors.filter(
+					doctor => doctor._id !== action.payload
+				),
+				selectedDoctor: null
+			};
 		// case CLEAR_CURRENT_RECORD:
 		// 	return {
 		// 		...state,

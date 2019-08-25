@@ -6,9 +6,10 @@ import Home from './components/pages/Home';
 import Patients from './components/pages/Patients';
 import Sidebar from './components/layout/Sidebar';
 import PatientState from './components/context/patientContext/patientState';
-import AddForm from './components/patients/AddForm';
+import AddPatient from './components/patients/AddPatient';
 import DoctorState from './components/context/doctorContext/doctorState';
 import Doctors from './components/pages/Doctors';
+import AddDoctor from './components/doctors/AddDoctor';
 
 function App() {
 	return (
@@ -25,7 +26,8 @@ function App() {
 										<Route exact path="/" component={Home} />
 										<Route exact path="/patients" component={Patients} />
 										<Route exact path="/doctors" component={Doctors} />
-										<Route exact path="/patients/add" component={AddForm} />
+										<Route exact path="/patients/add" component={AddPatient} />
+										<Route exact path="/doctors/add" component={AddDoctor} />
 									</Switch>
 								</div>
 							</div>

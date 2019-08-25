@@ -8,7 +8,6 @@ const Pagination = ({ numberPatients, itemsPerPage, getRecords, history }) => {
 
 	let page = parseInt(new URLSearchParams(location.search).get('page'));
 
-
 	const pagination = [];
 
 	for (let i = 1; i <= pages; i++) {
@@ -26,8 +25,8 @@ const Pagination = ({ numberPatients, itemsPerPage, getRecords, history }) => {
 	}
 
 	return (
-		<div>
-			<ul className="pagination">{pagination}</ul>
+		<div className="d-flex flex-row-reverse">
+			<ul className="pagination justify-content-end">{pagination}</ul>
 		</div>
 	);
 };

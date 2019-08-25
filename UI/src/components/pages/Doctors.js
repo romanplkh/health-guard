@@ -15,7 +15,7 @@ const Doctors = ({ history }) => {
 				<div className="col-xl-8 col-sm-12 ">
 					<h1 className="display-4 text-center mt-3">Doctors</h1>
 					<Link
-						to="patients/add"
+						to="doctors/add"
 						className="btn btn-outline-success float-right mb-3"
 					>
 						Add

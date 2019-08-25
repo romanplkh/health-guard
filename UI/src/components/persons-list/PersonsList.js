@@ -18,16 +18,12 @@ const PersonsList = ({ getRecord, getRecords, element, data }) => {
 				data.map(person => {
 					return (
 						<PersonItem
-							{...person}
 							key={person._id}
+							{...person}
 							onPersonClick={() => onPersonClick(person._id)}
 						/>
 					);
 				})}
-
-			{/* {details && (
-				<Pagination {...details} history={history} getRecords={getRecords} />
-			)} */}
 		</Fragment>
 	);
 };

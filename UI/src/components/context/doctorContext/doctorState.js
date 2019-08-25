@@ -2,13 +2,12 @@ import React, { useReducer } from 'react';
 import DoctorContext from './doctorContext';
 import DoctorReducer from './doctorReducer';
 import axios from 'axios';
-import {} from 'react-router-dom';
+
 
 import {
 	ADD_RECORD,
 	DELETE_RECORD,
 	UPDATE_RECORD,
-	GET_DOCTORS,
 	GET_RECORD,
 	SET_EDIT_MODE,
 	RESET_EDIT_MODE,
@@ -32,19 +31,19 @@ const DoctorState = props => {
 	axios.defaults.baseURL = 'http://localhost:5000/api/admin';
 	axios.defaults.headers['Content-Type'] = 'application/json';
 
-	// //!Add PATIENT
-	// //?Add image upload function => AddForm compinent
-	// const addPatient = async patient => {
-	// 	try {
-	// 		const resp = await axios.post('/patients', patient);
-	// 		dispatch({ type: ADD_RECORD, payload: resp.data });
-	// 	} catch (error) {
-	// 		dispatch({
-	// 			type: ADD_RECORD_FAIL,
-	// 			payload: error.response.data.msg || 'error my'
-	// 		});
-	// 	}
-	// };
+	// //!Add DOCTOR
+	const addRecord = async doctor => {
+		try {
+			const resp = await axios.post('/doctors', doctor);
+			dispatch({ type: ADD_RECORD, payload: resp.data });
+
+		} catch (error) {
+			dispatch({
+				type: ADD_RECORD_FAIL,
+				payload:  'error my'
+			});
+		}
+	};
 
 	//!GET_DOCTORS
 
@@ -118,6 +117,7 @@ const DoctorState = props => {
 				selectedDoctor: state.selectedDoctor,
 				editMode: state.editMode,
 				actions: {
+					addRecord,
 					getRecords,
 					setEditMode,
 					deleteRecord,
@@ -125,22 +125,6 @@ const DoctorState = props => {
 					updateRecord,
 					resetEditMode
 				}
-				// details: state.details,
-				// selectedPatient: state.selectedPatient,
-				// editMode: state.editMode,
-				// error: state.error,
-				// addedRecord: state.addedRecord,
-				// actions: {
-				// 	addPatient,
-				// 	getRecords,
-				// 	getRecord,
-				// 	setEditMode,
-				// 	resetEditMode,
-				// 	updateRecord,
-				// 	clearCurrentRecord,
-				// 	deleteRecord,
-				// 	resetError
-				//}
 			}}
 		>
 			{props.children}

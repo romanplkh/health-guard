@@ -5,11 +5,9 @@ import Pagination from '../layout/Pagination';
 import PersonsList from '../persons-list/PersonsList';
 
 const PatientList = ({ history }) => {
-	
 	const patientCTX = useContext(PatientContext);
 	const { patients, details } = patientCTX;
 	const { getRecords, getRecord } = patientCTX.actions;
-
 
 	return (
 		<Fragment>
@@ -32,9 +30,11 @@ const PatientList = ({ history }) => {
 					/>
 				</tbody>
 			</table>
-			{details && (
-				<Pagination {...details} history={history} getRecords={getRecords} />
-			)}
+
+				{details && (
+					<Pagination {...details} history={history} getRecords={getRecords} />
+				)}
+			
 		</Fragment>
 	);
 };
