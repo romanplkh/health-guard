@@ -36,7 +36,10 @@ exports.addPatient = async (req, res, next) => {
 
 		let image = req.file;
 
-		image = image.path;
+		console.log(req.file);
+		image = image.filename;
+
+		console.log(image);
 
 		const newPatient = new Patient({
 			firstName,

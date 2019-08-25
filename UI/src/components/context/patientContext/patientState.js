@@ -34,12 +34,10 @@ const PatientState = props => {
 	//!Add Patient
 	//?Add image upload function => AddForm compinent
 	const addPatient = async patient => {
-	
-	
 		try {
 			const resp = await axios.post('/patients', patient, {
-				headers:{'Accept':'application/json'
-			}});
+				headers: { Accept: 'application/json' }
+			});
 			dispatch({ type: ADD_RECORD, payload: resp.data });
 		} catch (error) {
 			dispatch({
@@ -55,6 +53,7 @@ const PatientState = props => {
 		try {
 			const resp = await axios.get(`/patients?page=${page}`);
 			if (resp.status === 200) {
+				console.log(resp.data);
 				dispatch({ type: GET_RECORDS, payload: resp.data });
 			}
 		} catch (error) {
@@ -68,6 +67,8 @@ const PatientState = props => {
 		try {
 			const resp = await axios.get(`/patients/${id}`);
 			if (resp.status === 200) {
+
+				console.log(resp.data)
 				dispatch({ type: GET_RECORD, payload: resp.data });
 			}
 		} catch (error) {

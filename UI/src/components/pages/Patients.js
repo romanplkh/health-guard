@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import PatientList from '../patients/PatientList';
-import PatientDetails from '../patients/PatientDetails';
 import PersonDetails from '../person-details/PersonDetails';
 import { Link } from 'react-router-dom';
 import patientContext from '../context/patientContext/patientContext';

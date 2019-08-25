@@ -32,7 +32,7 @@ const PersonDetails = ({ data, actions, editMode, occupation = null }) => {
 			<div className="card mb-3" style={{ width: '20rem' }}>
 				<div className="row justify-content-center pt-2">
 					<img
-						src={data.image}
+						src={`${process.env.PUBLIC_URL}/images/${data.image}`}
 						className="img-thumbnail "
 						alt="..."
 						style={{ width: '10rem' }}

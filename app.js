@@ -30,7 +30,7 @@ app.get('/', (req, res) =>
 const fileStorage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		//If pass null storage will not crash if image is not uploaded
-		cb(null, 'images');
+		cb(null, './UI/public/images');
 	},
 	filename: (req, file, cb) => {
 		cb(null, Date.now() + '-' + file.originalname);
