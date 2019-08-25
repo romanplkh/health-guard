@@ -29,18 +29,22 @@ const PatientState = props => {
 	const [state, dispatch] = useReducer(patientReducer, initialState);
 
 	axios.defaults.baseURL = 'http://localhost:5000/api/admin';
-	axios.defaults.headers['Content-Type'] = 'application/json';
+	// axios.defaults.headers['Content-Type'] = 'application/json';
 
 	//!Add Patient
 	//?Add image upload function => AddForm compinent
 	const addPatient = async patient => {
+	
+	
 		try {
-			const resp = await axios.post('/patients', patient);
+			const resp = await axios.post('/patients', patient, {
+				headers:{'Accept':'application/json'
+			}});
 			dispatch({ type: ADD_RECORD, payload: resp.data });
 		} catch (error) {
 			dispatch({
 				type: ADD_RECORD_FAIL,
-				payload: error.response.data.msg || 'error my'
+				payload: error
 			});
 		}
 	};
@@ -58,7 +62,7 @@ const PatientState = props => {
 		}
 	};
 
-	//!GET PATIENT 
+	//!GET PATIENT
 
 	const getRecord = async id => {
 		try {

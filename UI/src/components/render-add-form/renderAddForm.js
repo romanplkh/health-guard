@@ -9,14 +9,36 @@ const RenderAddForm = ({ history, type, add }) => {
 
 	const [record, setRecord] = useState(option);
 
+	const [selectedFile, setFile] = useState(null);
+
 	const onTextChange = e => {
-		setRecord({ ...record, [e.target.name]: e.target.value.toString() });
+			setRecord({ ...record, [e.target.name]: e.target.value.toString() });
+	
+	};
+
+	const onChangeHandler = event => {
+		console.log(event.target.files[0]);
+		setFile(event.target.files[0]);
 	};
 
 	const onAddRecord = e => {
-		const path = type === 'doctors' ? '/doctors' : '/patients';
 		e.preventDefault();
-		add(record);
+		const path = type === 'doctors' ? '/doctors' : '/patients';
+
+		const data = new FormData();
+
+
+		const toArrObj = Object.entries(record);
+
+		toArrObj.forEach(el => {
+			console.log(el)
+			data.append(el[0], el[1]);
+		});
+
+		data.append('file', selectedFile);
+
+		add(data);
+		// add(record);
 		history.push(path);
 	};
 
@@ -77,15 +99,27 @@ const RenderAddForm = ({ history, type, add }) => {
 					Add {type === 'doctors' ? 'Doctor' : 'Patient'}
 				</h1>
 				<form onSubmit={onAddRecord}>
-					<div className="form-group">
-						<label>Image</label>
+					<div>
+						<input type="file" name="file" onChange={onChangeHandler} />
+					</div>
+					{/* <div>
 						<input
-							type="text"
-							name="firstName"
-							className="form-control"
+							type="file"
+							name="image"
+							id="imgupload"
 							onChange={onTextChange}
 						/>
-					</div>
+					</div> */}
+					{/* <div className="form-group">
+						<label>Image</label>
+						<input
+							type="file"
+							name="image"
+							className="form-control-file"
+							onChange={onTextChange}
+							formEncType="multipart/form-data"
+						/>
+					</div> */}
 					<div className="form-group">
 						<label>First Name</label>
 						<input

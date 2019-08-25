@@ -4,6 +4,9 @@ UI/node_modules
 UI/.pnp
 UI/.pnp.js
 
+/images
+
+images
 # testing
 /coverage
 

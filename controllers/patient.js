@@ -29,15 +29,10 @@ exports.getPatients = async (req, res, next) => {
 };
 
 exports.addPatient = async (req, res, next) => {
+	console.log(req.file);
+	console.log(req.body);
 	try {
-		const {
-			firstName,
-			lastName,
-			middleName = null,
-			phone,
-			email,
-			type
-		} = req.body;
+		const { firstName, lastName, phone, email, type } = req.body;
 
 		let image = req.file;
 
@@ -46,7 +41,6 @@ exports.addPatient = async (req, res, next) => {
 		const newPatient = new Patient({
 			firstName,
 			lastName,
-			middleName,
 			phone,
 			email,
 			type,

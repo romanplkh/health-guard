@@ -7,22 +7,25 @@ const connectDB = require('./config/db');
 const adminRoutes = require('./routes/admin');
 const _PORT = process.env.PORT || 5000;
 const multer = require('multer');
+const cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.json({ extended: false }));
 //*asd */
 app.get('/', (req, res) =>
 	res.json({ msg: 'Welcome to the HealthGuard API...' })
 );
 
-app.use((req, res, next) => {
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.setHeader(
-		'Access-Control-Allow-Methods',
-		'OPTIONS, GET, POST, PUT, PATCH, DELETE'
-	);
-	res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-	next();
-});
+// app.use((req, res, next) => {
+// 	res.setHeader('Access-Control-Allow-Origin', '*');
+// 	res.setHeader(
+// 		'Access-Control-Allow-Methods',
+// 		'*',
+// 		'OPTIONS, GET, POST, PUT, PATCH, DELETE'
+// 	);
+// 	res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+// 	next();
+// });
 
 const fileStorage = multer.diskStorage({
 	destination: (req, file, cb) => {
@@ -34,20 +37,30 @@ const fileStorage = multer.diskStorage({
 	}
 });
 
-const fileFilter = (req, file, cb) => {
-	if (
-		file.mimetype === 'image/png' ||
-		file.mimetype === 'image/jpeg' ||
-		file.mimetype === 'image/jpg'
-	) {
-		cb(null, true);
-	}
-	cb(null, false);
-};
+const upload = multer({ storage: fileStorage }).single('file');
 
-app.use(
-	multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
-);
+app.use(upload);
+
+// const fileFilter = (req, file, cb) => {
+// 	if (
+// 		file.mimetype === 'image/png' ||
+// 		file.mimetype === 'image/jpeg' ||
+// 		file.mimetype === 'image/jpg'
+// 	) {
+// 		cb(null, true);
+// 	}
+// 	cb(null, false);
+
+// 	console.log('FILE STORAGE RUN');
+// };
+
+// app.use(
+// 	multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'),
+// 	(req, res, next) => {
+// 		console.log('multer ');
+// 		next();
+// 	}
+// );
 
 app.use('/api/admin', adminRoutes);
 
