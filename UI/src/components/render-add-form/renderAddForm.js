@@ -13,8 +13,8 @@ const RenderAddForm = ({ history, type, add }) => {
 		setRecord({ ...record, [e.target.name]: e.target.value.toString() });
 	};
 
-  const onAddRecord = e => {
-    const path = type === "doctors" ? '/doctors' : '/patients'
+	const onAddRecord = e => {
+		const path = type === 'doctors' ? '/doctors' : '/patients';
 		e.preventDefault();
 		add(record);
 		history.push(path);
@@ -77,6 +77,15 @@ const RenderAddForm = ({ history, type, add }) => {
 					Add {type === 'doctors' ? 'Doctor' : 'Patient'}
 				</h1>
 				<form onSubmit={onAddRecord}>
+					<div className="form-group">
+						<label>Image</label>
+						<input
+							type="text"
+							name="firstName"
+							className="form-control"
+							onChange={onTextChange}
+						/>
+					</div>
 					<div className="form-group">
 						<label>First Name</label>
 						<input

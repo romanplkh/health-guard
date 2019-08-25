@@ -20,6 +20,10 @@ const patientSchema = new Schema({
 	type: {
 		type: String,
 		default: 'General'
+	},
+	image: {
+		type: String,
+		required: true
 	}
 });
 

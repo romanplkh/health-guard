@@ -39,13 +39,18 @@ exports.addPatient = async (req, res, next) => {
 			type
 		} = req.body;
 
+		let image = req.file;
+
+		image = image.path;
+
 		const newPatient = new Patient({
 			firstName,
 			lastName,
 			middleName,
 			phone,
 			email,
-			type
+			type,
+			image
 		});
 
 		const patient = await Patient.findOne({ email });
