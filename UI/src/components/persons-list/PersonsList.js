@@ -1,6 +1,8 @@
 import React, { useEffect, Fragment } from 'react';
+import Spinner from '../layout/Spinner';
 
 const PersonsList = ({ getRecord, getRecords, element, data }) => {
+
 	useEffect(() => {
 		getRecords();
 		//eslint-disable-next-line
@@ -11,6 +13,14 @@ const PersonsList = ({ getRecord, getRecords, element, data }) => {
 	};
 
 	const PersonItem = element;
+
+	if (!data) {
+		return (
+			<div className="text-center">
+				<Spinner />
+			</div>
+		);
+	}
 
 	return (
 		<Fragment>

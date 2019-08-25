@@ -28,7 +28,6 @@ const Doctors = ({ history }) => {
 				<div className="col-xl-4 col d-xl-block d-none">
 					<h1 className="display-4 text-center mt-3 mb-5">Details</h1>
 					<div className="row justify-content-center">
-						{/* <PatientDetails /> */}
 						<PersonDetails
 							data={selectedDoctor}
 							actions={doctorCTX.actions}

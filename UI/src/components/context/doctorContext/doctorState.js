@@ -3,7 +3,6 @@ import DoctorContext from './doctorContext';
 import DoctorReducer from './doctorReducer';
 import axios from 'axios';
 
-
 import {
 	ADD_RECORD,
 	DELETE_RECORD,
@@ -35,12 +34,12 @@ const DoctorState = props => {
 	const addRecord = async doctor => {
 		try {
 			const resp = await axios.post('/doctors', doctor);
-			dispatch({ type: ADD_RECORD, payload: resp.data });
 
+			dispatch({ type: ADD_RECORD, payload: resp.data });
 		} catch (error) {
 			dispatch({
 				type: ADD_RECORD_FAIL,
-				payload:  'error my'
+				payload: 'error my'
 			});
 		}
 	};
@@ -49,7 +48,7 @@ const DoctorState = props => {
 
 	const getRecords = async (page = 1) => {
 		try {
-			const resp = await axios.get(`/doctors`);
+			const resp = await axios.get(`/doctors?page=${page}`);
 			console.log(resp);
 			if (resp.status === 200) {
 				dispatch({ type: GET_RECORDS, payload: resp.data });
@@ -116,6 +115,7 @@ const DoctorState = props => {
 				doctors: state.doctors,
 				selectedDoctor: state.selectedDoctor,
 				editMode: state.editMode,
+				details: state.details,
 				actions: {
 					addRecord,
 					getRecords,

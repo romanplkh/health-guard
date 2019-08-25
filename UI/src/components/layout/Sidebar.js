@@ -19,7 +19,7 @@ const Sidebar = () => {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link to="/doctors" className="nav-link text-white">
+						<Link to="/doctors?page=1" className="nav-link text-white">
 							<FontAwesomeIcon icon={faUserMd} size="lg" /> Doctors
 						</Link>
 					</li>

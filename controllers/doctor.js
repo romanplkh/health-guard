@@ -1,10 +1,29 @@
 const Doctor = require('../models/Doctor');
 const error505 = require('../helpers/errors').error500;
+const DOCTORS_PER_PAGE = 5;
 
 exports.getDoctors = async (req, res, next) => {
+
+	const page = req.query.page;
+
 	try {
-		const doctors = await Doctor.find().sort({ lastName: 1 });
-		res.json(doctors);
+		const numDoctors = await Doctor.find().countDocuments();
+
+		let doctors = await Doctor.find()
+			.skip((page - 1) * DOCTORS_PER_PAGE)
+			.limit(DOCTORS_PER_PAGE)
+			.sort({ lastName: 1 });
+
+		const details = {
+			numberDoctors: numDoctors,
+			itemsPerPage: DOCTORS_PER_PAGE
+		};
+
+		const doctorsList = doctors;
+
+		const result = { details, doctorsList };
+
+		res.json(result);
 	} catch (error) {
 		error505(error, res);
 	}

@@ -31,10 +31,15 @@ const PatientList = ({ history }) => {
 				</tbody>
 			</table>
 
-				{details && (
-					<Pagination {...details} history={history} getRecords={getRecords} />
-				)}
-			
+			{details && (
+				<Pagination
+					{...details}
+					numberRecords={details.numberPatients}
+					history={history}
+					getRecords={getRecords}
+					path="/patients"
+				/>
+			)}
 		</Fragment>
 	);
 };

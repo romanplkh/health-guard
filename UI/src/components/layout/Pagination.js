@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Pagination = ({ numberPatients, itemsPerPage, getRecords, history }) => {
-	const pages = Math.ceil(numberPatients / itemsPerPage);
+const Pagination = ({
+	numberRecords,
+	itemsPerPage,
+	getRecords,
+	history,
+	path
+}) => {
+	const pages = Math.ceil(numberRecords / itemsPerPage);
 
 	const { location } = history;
 
@@ -14,7 +20,7 @@ const Pagination = ({ numberPatients, itemsPerPage, getRecords, history }) => {
 		pagination.push(
 			<li key={i} className={page === i ? 'page-item active' : 'page-item'}>
 				<Link
-					to={{ pathname: '/patients', search: `?page=${i}` }}
+					to={{ pathname: path, search: `?page=${i}` }}
 					className="page-link"
 					onClick={() => getRecords(i)}
 				>

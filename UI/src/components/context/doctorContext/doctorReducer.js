@@ -13,13 +13,13 @@ import {
 } from '../types';
 
 export default (state, action) => {
-	console.log(action, 'action');
+	console.log(action)
 	switch (action.type) {
 		case GET_RECORDS:
 			return {
 				...state,
-				doctors: action.payload
-				// details: { ...action.payload.details }
+				doctors: [...action.payload.doctorsList],
+				details: { ...action.payload.details }
 			};
 		case GET_RECORD:
 			return {
@@ -48,9 +48,7 @@ export default (state, action) => {
 		case DELETE_RECORD:
 			return {
 				...state,
-				doctors: state.doctors.filter(
-					doctor => doctor._id !== action.payload
-				),
+				doctors: state.doctors.filter(doctor => doctor._id !== action.payload),
 				selectedDoctor: null
 			};
 		// case CLEAR_CURRENT_RECORD:

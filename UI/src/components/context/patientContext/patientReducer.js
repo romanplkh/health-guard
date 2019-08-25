@@ -12,6 +12,7 @@ import {
 } from '../types';
 
 export default (state, action) => {
+	console.log(action);
 	switch (action.type) {
 		case GET_RECORDS:
 			return {

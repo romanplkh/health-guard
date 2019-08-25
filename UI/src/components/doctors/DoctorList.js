@@ -1,12 +1,12 @@
-import React, { useContext, Fragment} from 'react';
+import React, { useContext, Fragment } from 'react';
 import DoctorContext from '../context/doctorContext/doctorContext';
 import DoctorItem from '../doctors/DoctorItem';
 import Pagination from '../layout/Pagination';
 import PersonsList from '../persons-list/PersonsList';
 
-const DoctorList = () => {
+const DoctorList = ({ history }) => {
 	const doctorCTX = useContext(DoctorContext);
-	const { doctors } = doctorCTX;
+	const { doctors, details } = doctorCTX;
 	const { getRecords, getRecord } = doctorCTX.actions;
 
 	return (
@@ -31,9 +31,15 @@ const DoctorList = () => {
 					/>
 				</tbody>
 			</table>
-			{/* {details && (
-				<Pagination {...details} history={history} getRecords={getRecords} />
-			)} */}
+			{details && (
+				<Pagination
+					{...details}
+					numberRecords={details.numberDoctors}
+					history={history}
+					getRecords={getRecords}
+					path="/doctors"
+				/>
+			)}
 		</Fragment>
 	);
 };
