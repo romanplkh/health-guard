@@ -26,10 +26,10 @@ const AppointmentSearch = props => {
 	};
 
 	return (
-		<InputGroup className="mb-3">
+		<InputGroup className="mb-3 ">
 			<DropdownButton
 				as={InputGroup.Prepend}
-				variant="outline-secondary"
+				variant="outline-info"
 				title="Search"
 				id="input-group-dropdown-1"
 			>
