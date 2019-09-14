@@ -29,17 +29,11 @@ exports.getPatients = async (req, res, next) => {
 };
 
 exports.addPatient = async (req, res, next) => {
-	console.log(req.file);
-	console.log(req.body);
 	try {
 		const { firstName, lastName, phone, email, type } = req.body;
 
 		let image = req.file;
-
-		console.log(req.file);
 		image = image.filename;
-
-		console.log(image);
 
 		const newPatient = new Patient({
 			firstName,
@@ -117,7 +111,6 @@ exports.deletePatient = async (req, res, next) => {
 		const result = await Patient.deleteOne({ _id: patient.id });
 
 		if (!result.ok) {
-			console.log(error.message);
 			res.status(500).send('Server error. Could not delete patient. Try later');
 		}
 

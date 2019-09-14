@@ -4,9 +4,11 @@ import PersonDetails from '../person-details/PersonDetails';
 import { Link } from 'react-router-dom';
 import patientContext from '../context/patientContext/patientContext';
 
+
 const Patients = ({ history }) => {
 	const patientCTX = useContext(patientContext);
 	const { selectedPatient, editMode } = patientCTX;
+
 
 	return (
 		<div className="container-fluid">

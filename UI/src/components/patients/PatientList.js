@@ -4,6 +4,7 @@ import PatientItem from './PatientItem';
 import Pagination from '../layout/Pagination';
 import PersonsList from '../persons-list/PersonsList';
 
+
 const PatientList = ({ history }) => {
 	const patientCTX = useContext(PatientContext);
 	const { patients, details } = patientCTX;

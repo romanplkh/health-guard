@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Patients from './components/pages/Patients';
@@ -10,6 +11,7 @@ import AddPatient from './components/patients/AddPatient';
 import DoctorState from './components/context/doctorContext/doctorState';
 import Doctors from './components/pages/Doctors';
 import AddDoctor from './components/doctors/AddDoctor';
+import Appointments from './components/pages/Appointments';
 
 function App() {
 	return (
@@ -28,6 +30,11 @@ function App() {
 										<Route exact path="/doctors" component={Doctors} />
 										<Route exact path="/patients/add" component={AddPatient} />
 										<Route exact path="/doctors/add" component={AddDoctor} />
+										<Route
+											exact
+											path="/appointments"
+											component={Appointments}
+										/>
 									</Switch>
 								</div>
 							</div>

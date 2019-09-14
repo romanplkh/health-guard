@@ -8,7 +8,6 @@ const RenderAddForm = ({ history, type, add }) => {
 	}
 
 	const [record, setRecord] = useState(option);
-
 	const [selectedFile, setFile] = useState(null);
 
 	const onTextChange = e => {
@@ -17,7 +16,6 @@ const RenderAddForm = ({ history, type, add }) => {
 	};
 
 	const onChangeHandler = event => {
-		console.log(event.target.files[0]);
 		setFile(event.target.files[0]);
 	};
 
@@ -26,8 +24,6 @@ const RenderAddForm = ({ history, type, add }) => {
 		const path = type === 'doctors' ? '/doctors' : '/patients';
 
 		const data = new FormData();
-
-
 		const toArrObj = Object.entries(record);
 
 		toArrObj.forEach(el => {
